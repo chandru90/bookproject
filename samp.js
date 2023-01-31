@@ -28,6 +28,16 @@ function addItem(e)
     const parentitem =document.getElementById('list-items')
     const childelement =document.createElement('li')
     childelement.textContent=obj.username + '-'+ obj.pass + '-' + obj.emailid
-    parentitem.appendChild(childelement)
+   
+    const deletebtn =document.createElement('input')
+    deletebtn.type="button"
+    deletebtn.value='delete'
+    deletebtn.onclick=() =>
+    {
+        localStorage.removeItem(obj.emailid)
+        parentitem.removeChild(childelement)
+    }
+   childelement.appendChild(deletebtn)
+   parentitem.appendChild(childelement)
 
 }
