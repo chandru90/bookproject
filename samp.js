@@ -28,7 +28,18 @@ function addItem(e)
     const parentitem =document.getElementById('list-items')
     const childelement =document.createElement('li')
     childelement.textContent=obj.username + '-'+ obj.pass + '-' + obj.emailid
-   
+   const editbtnn=document.createElement('input')
+   editbtnn.type ="button"
+   editbtnn.value=' edit '
+
+   editbtnn.onclick =()=>
+   {
+    localStorage.removeItem(obj.emailid)
+    parentitem.removeChild(childelement)
+    document.getElementById('item').value=obj.username
+    document.getElementById('pass').value=obj.pass
+    document.getElementById('email').value=obj.emailid
+   }
     const deletebtn =document.createElement('input')
     deletebtn.type="button"
     deletebtn.value='delete'
@@ -37,7 +48,8 @@ function addItem(e)
         localStorage.removeItem(obj.emailid)
         parentitem.removeChild(childelement)
     }
-   childelement.appendChild(deletebtn)
+   childelement.appendChild(editbtnn)
+    childelement.appendChild(deletebtn)
    parentitem.appendChild(childelement)
 
 }
